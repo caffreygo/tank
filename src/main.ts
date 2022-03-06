@@ -1,6 +1,6 @@
 import "./style.scss";
 import config from "./config";
-import straw from "./canvas/Straw";
+import straw from "./canvas/straw";
 import { promises } from "./service/image";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;

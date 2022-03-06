@@ -1,10 +1,10 @@
-import canvasAbstract from "./CanvasAbstract"
+import canvasAbstract from "./canvasAbstract"
 
-class Tank extends canvasAbstract {
+class tank extends canvasAbstract {
     render() {
         throw new Error("Method not implemented.")
     }
 
 }
 
-export default new Tank()
+export default new tank()
