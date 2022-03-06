@@ -3,6 +3,8 @@ import position from "../service/position";
 
 export default abstract class canvasAbstract {
   protected models: IModel[] = [];
+  abstract num(): number;
+  abstract model(): ModelConstructor;
   abstract render(): void;
 
   constructor(
@@ -21,8 +23,9 @@ export default abstract class canvasAbstract {
   }
 
   // 生成模型实例
-  protected createModels(num: number, model: ModelConstructor) {
-    position.getCollection(num).forEach((position) => {
+  protected createModels() {
+    position.getCollection(this.num()).forEach((position) => {
+      const model = this.model()
       const instance = new model(this.canvas, position.x, position.y);
       this.models.push(instance);
     });

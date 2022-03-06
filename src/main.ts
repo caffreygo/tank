@@ -3,6 +3,8 @@ import config from "./config";
 import wall from "./canvas/wall";
 import straw from "./canvas/straw";
 import { promises } from "./service/image";
+import water from "./canvas/water";
+import steel from "./canvas/steel";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
 app.style.width = config.canvas.width + "px";
@@ -12,6 +14,8 @@ async function bootstrap() {
   await Promise.all(promises);
   straw.render();
   wall.render();
+  water.render();
+  steel.render();
 }
 
 bootstrap();

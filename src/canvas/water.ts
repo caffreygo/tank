@@ -1,10 +1,10 @@
 import config from "../config";
 import canvasAbstract from "./canvasAbstract";
-import model from "../model/wall";
+import model from "../model/water";
 
-class wall extends canvasAbstract {
+class water extends canvasAbstract {
   num(): number {
-    return config.wall.num;
+    return config.water.num;
   }
   model(): ModelConstructor {
     return model;
@@ -18,4 +18,4 @@ class wall extends canvasAbstract {
   }
 }
 
-export default new wall();
+export default new water();
