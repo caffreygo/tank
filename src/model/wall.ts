@@ -3,6 +3,6 @@ import modelAbstract from "./modelAbstract";
 
 export default class extends modelAbstract implements IModel {
   render(): void {
-    super.draw(image.get("straw")!);
+    super.draw(image.get("wall")!);
   }
 }
