@@ -9,11 +9,8 @@ class water extends canvasAbstract {
   model(): ModelConstructor {
     return model;
   }
-  constructor() {
-    super();
-    super.createModels();
-  }
   render() {
+    super.createModels();
     super.renderModels();
   }
 }
