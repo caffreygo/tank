@@ -1,7 +1,8 @@
 import config from "../config";
+import position from "../service/position";
 
 export default abstract class canvasAbstract {
-  protected items = [];
+  protected models: IModel[] = [];
   abstract render(): void;
 
   constructor(
@@ -12,43 +13,25 @@ export default abstract class canvasAbstract {
     this.createCanvas();
   }
 
+  // 创建当前图层画布
   protected createCanvas() {
     this.el.width = config.canvas.width;
     this.el.height = config.canvas.height;
     this.app.insertAdjacentElement("afterbegin", this.el);
   }
 
-  protected drawModels(num: number, model: ModelConstructor) {
-    this.positionCollection(num).forEach((position) => {
+  // 生成模型实例
+  protected createModels(num: number, model: ModelConstructor) {
+    position.getCollection(num).forEach((position) => {
       const instance = new model(this.canvas, position.x, position.y);
-      instance.render();
+      this.models.push(instance);
     });
   }
 
-  protected positionCollection(num: number) {
-    const collection = [] as { x: number; y: number }[];
-
-    for (let i = 0; i < num; i++) {
-      const position = this.position();
-      const exists = collection.some(
-        (c) => c.x === position.x && c.y === position.y
-      );
-      if (!exists) {
-        collection.push(position);
-      }
-    }
-    return collection;
-  }
-
-  protected position() {
-    return {
-      x:
-        Math.floor(Math.random() * (config.canvas.width / config.model.width)) *
-        config.model.width,
-      y:
-        Math.floor(
-          Math.random() * (config.canvas.height / config.model.height)
-        ) * config.model.height,
-    };
+  // 将模型渲染到画布上
+  protected renderModels() {
+    this.models.forEach((model) => {
+      model.render();
+    });
   }
 }
