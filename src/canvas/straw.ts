@@ -1,5 +1,10 @@
-import canvasAbstract from "./canvasAbstract";
+import config from "../config";
+import CanvasAbstract from "./CanvasAbstract";
 
-class straw extends canvasAbstract {}
+class Straw extends CanvasAbstract {
+  render() {
+    super.drawModels(config.straw.num);
+  }
+}
 
-export default new straw();
+export default new Straw();
