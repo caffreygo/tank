@@ -1,4 +1,4 @@
-import canvasAbstract from "./canvas";
+import canvasAbstract from "./canvasAbstract";
 
 class straw extends canvasAbstract {}
 
