@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import model from "../model/wall";
 
-class wall extends canvasAbstract {
+class wall extends canvasAbstract implements ICanvas {
   num(): number {
     return config.wall.num;
   }

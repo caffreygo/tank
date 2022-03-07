@@ -2,7 +2,7 @@ import config from "../config";
 import canvasAbstract from "./canvasAbstract";
 import model from "../model/straw";
 
-class straw extends canvasAbstract {
+class straw extends canvasAbstract implements ICanvas {
   num(): number {
     return config.straw.num;
   }
