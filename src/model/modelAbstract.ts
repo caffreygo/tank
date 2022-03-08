@@ -5,6 +5,8 @@ export default abstract class modelAbstract {
   abstract render(): void;
   abstract image(): HTMLImageElement;
   protected direction: directionEnum = directionEnum.top;
+  public width = config.model.width;
+  public height = config.model.height;
 
   constructor(
     protected canvas: CanvasRenderingContext2D,
@@ -20,8 +22,8 @@ export default abstract class modelAbstract {
       this.image(),
       this.x,
       this.y,
-      config.model.width,
-      config.model.height
+      this.width,
+      this.height
     );
   }
 
