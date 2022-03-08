@@ -6,9 +6,11 @@ class wall extends canvasAbstract implements ICanvas {
   num(): number {
     return config.wall.num;
   }
+
   model(): ModelConstructor {
     return model;
   }
+
   render() {
     super.createModels();
     super.renderModels();
