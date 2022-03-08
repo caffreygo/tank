@@ -12,6 +12,9 @@ export default class extends modelAbstract implements IModel {
 
   render(): void {
     this.move();
+    if (_.random(20) === 1) {
+      this.direction = directionEnum.bottom;
+    }
   }
 
   protected move() {

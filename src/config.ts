@@ -18,13 +18,13 @@ export default {
     height: 30,
   },
   straw: {
-    num: 120,
+    num: 180,
   },
   wall: {
-    num: 80,
+    num: 40,
   },
   water: {
-    num: 60,
+    num: 20,
   },
   steel: {
     num: 20,
