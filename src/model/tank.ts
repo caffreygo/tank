@@ -6,8 +6,10 @@ import config from "../config";
 import water from "../canvas/water";
 import wall from "../canvas/wall";
 import steel from "../canvas/steel";
+import tank from "../canvas/tank";
 
 export default class extends modelAbstract implements IModel {
+  canvas: ICanvas = tank;
   name: "tank" = "tank";
 
   render(): void {
