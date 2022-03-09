@@ -4,10 +4,11 @@ import position from "../service/position";
 export default abstract class canvasAbstract {
   public models: IModel[] = [];
   abstract num(): number;
-  abstract model(): ModelConstructor;
+  abstract model(): ModelConstructor | BulletModelConstructor;
   abstract render(): void;
 
   constructor(
+    protected name: string,
     protected app = document.querySelector<HTMLDivElement>("#app")!,
     protected el = document.createElement("canvas"),
     public ctx = el.getContext("2d")!
@@ -19,20 +20,26 @@ export default abstract class canvasAbstract {
   protected createCanvas() {
     this.el.width = config.canvas.width;
     this.el.height = config.canvas.height;
-    this.app.insertAdjacentElement("afterbegin", this.el);
+    this.el.setAttribute("name", this.name);
+    this.app.insertAdjacentElement("beforeend", this.el);
   }
 
   // 生成模型实例
   protected createModels() {
     position.getCollection(this.num()).forEach((position) => {
-      const model = this.model();
+      const model = this.model() as ModelConstructor;
       const instance = new model(position.x, position.y);
       this.models.push(instance);
     });
   }
 
   // 将模型渲染到画布上
-  protected renderModels() {
+  public renderModels() {
+    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
     this.models.forEach((model) => model.render());
+  }
+
+  public removeModel(model: IModel) {
+    this.models = this.models.filter((m) => m !== model);
   }
 }

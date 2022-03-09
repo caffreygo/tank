@@ -6,6 +6,7 @@ import tankTop from "./static/images/tank/top.gif";
 import tankLeft from "./static/images/tank/left.gif";
 import tankRight from "./static/images/tank/right.gif";
 import tankBottom from "./static/images/tank/bottom.gif";
+import bullet from "./static/images/bullet/bullet.jpg";
 
 export default {
   timeout: 10,
@@ -17,6 +18,10 @@ export default {
     width: 30,
     height: 30,
   },
+  bullet: {
+    width: 4,
+    height: 4
+  },  
   straw: {
     num: 180,
   },
@@ -41,5 +46,6 @@ export default {
     tankLeft,
     tankRight,
     tankBottom,
+    bullet
   },
 };
