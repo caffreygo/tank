@@ -9,7 +9,8 @@ import tankBottom from "./static/images/tank/bottom.gif";
 import bullet from "./static/images/bullet/bullet.jpg";
 
 export default {
-  timeout: 10,
+  // 坦克图层重新渲染频率: 图层渲染 =>模型渲染 =>坦克移动 =>图片绘制
+  timeout: 20,
   canvas: {
     width: 900,
     height: 600,

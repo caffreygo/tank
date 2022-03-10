@@ -14,14 +14,9 @@ export default new (class extends canvasAbstract implements ICanvas {
 
   render() {
     this.createModels();
-    this.renderModels();
-
-    setInterval(() => this.renderModels(), config.timeout);
-  }
-
-  public renderModels() {
-    this.ctx.clearRect(0, 0, config.canvas.width, config.canvas.height);
     super.renderModels();
+    // 定时重新渲染坦克图层
+    setInterval(() => super.renderModels(), config.timeout);
   }
 
   protected createModels() {
