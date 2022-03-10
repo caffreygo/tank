@@ -1,4 +1,9 @@
+import boss from "../canvas/boss";
 import bullet from "../canvas/bullet";
+import player from "../canvas/player";
+import steel from "../canvas/steel";
+import tank from "../canvas/tank";
+import wall from "../canvas/wall";
 import config from "../config";
 import { directionEnum } from "../enum/directionEnum";
 import util from "../util";
@@ -19,18 +24,20 @@ export default class extends modelAbstract implements IModel {
   render(): void {
     let x = this.x;
     let y = this.y;
+    const step =
+      config.bullet.speed[this.tank.name as keyof typeof config.bullet.speed];
     switch (this.direction) {
       case directionEnum.top:
-        y -= 2;
+        y -= step;
         break;
       case directionEnum.right:
-        x += 2;
+        x += step;
         break;
       case directionEnum.bottom:
-        y += 2;
+        y += step;
         break;
       case directionEnum.left:
-        x -= 2;
+        x -= step;
         break;
     }
     // 子弹碰撞检测
@@ -38,11 +45,13 @@ export default class extends modelAbstract implements IModel {
       x,
       y,
       config.bullet.width,
-      config.bullet.height
+      config.bullet.height,
+      [...wall.models, ...steel.models, ...tank.models, ...boss.models, ...player.models]
     );
     if (util.isCanvasTouch(x, y, config.bullet.width, config.bullet.height)) {
+      // canvas图层边缘碰撞检测
       this.destroy();
-    } else if (touchModel) {
+    } else if (touchModel && touchModel.name !== this.tank.name) {
       this.destroy();
       if (touchModel.name !== "steel") touchModel.destroy();
       this.blast(touchModel);

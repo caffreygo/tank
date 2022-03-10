@@ -9,7 +9,9 @@ body {
   align-items: center;
   #app {
     position: relative;
-    background-color: #333;
+    background-color: #000;
+    border: 8px solid #333;
+    box-sizing: content-box;
     canvas {
       position: absolute;
     }

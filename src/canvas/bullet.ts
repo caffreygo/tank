@@ -27,4 +27,8 @@ export default new (class extends canvasAbstract implements ICanvas {
       }
     });
   }
+
+  addPlayerBullet(player: IModel) {
+    this.models.push(new bullet(player));
+  }
 })("bullet");

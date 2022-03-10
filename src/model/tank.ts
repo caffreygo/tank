@@ -12,6 +12,7 @@ export default class extends modelAbstract implements IModel {
 
   render(): void {
     this.move();
+    // 增加tank向下移动的概率
     if (_.random(50) === 1) {
       this.direction = directionEnum.bottom;
     }
@@ -21,18 +22,19 @@ export default class extends modelAbstract implements IModel {
     // while (true) {
     let x = this.x;
     let y = this.y;
+    const step = config.tank.step;
     switch (this.direction) {
       case directionEnum.top:
-        y--;
+        y -= step;
         break;
       case directionEnum.right:
-        x++;
+        x += step;
         break;
       case directionEnum.bottom:
-        y++;
+        y += step;
         break;
       case directionEnum.left:
-        x--;
+        x -= step;
         break;
     }
     if (util.isModelTouch(x, y) || util.isCanvasTouch(x, y)) {

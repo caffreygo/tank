@@ -1,3 +1,4 @@
+import boss from "./canvas/boss";
 import steel from "./canvas/steel";
 import wall from "./canvas/wall";
 import config from "./config";
@@ -21,7 +22,7 @@ export default {
     y: number,
     width = config.model.width,
     height = config.model.height,
-    models = [...wall.models, ...steel.models]
+    models = [...wall.models, ...steel.models, ...boss.models]
   ): IModel | undefined {
     // model: 障碍物模型； this：坦克
     return models.find((model) => {
