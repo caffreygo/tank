@@ -4,6 +4,8 @@ import model from "../model/tank";
 import position from "../service/position";
 
 export default new (class extends canvasAbstract implements ICanvas {
+  intervalId = 0;
+
   num(): number {
     return config.tank.num;
   }
@@ -12,11 +14,15 @@ export default new (class extends canvasAbstract implements ICanvas {
     return model;
   }
 
+  stop() {
+    clearInterval(this.intervalId);
+  }
+
   render() {
     this.createModels();
     super.renderModels();
     // 定时重新渲染坦克图层
-    setInterval(() => super.renderModels(), config.timeout);
+    this.intervalId = setInterval(() => super.renderModels(), config.timeout);
   }
 
   protected createModels() {

@@ -1,5 +1,6 @@
 import config from "../config";
 import { directionEnum } from "../enum/directionEnum";
+import audio from "../service/audio";
 import { image, ImageMapKey } from "../service/image";
 export default abstract class modelAbstract {
   abstract name: string;
@@ -41,6 +42,7 @@ export default abstract class modelAbstract {
   }
 
   protected blast(model: IModel) {
+    audio.blast();
     Array(...Array(8).keys()).reduce((promise, index) => {
       return new Promise((resolve) => {
         setTimeout(() => {

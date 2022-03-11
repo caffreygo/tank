@@ -45,7 +45,7 @@ export default {
     num: 20,
   },
   tank: {
-    num: 10,
+    num: 5,
     step: 1,
   },
   player: {
